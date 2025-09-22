@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-libre: 'Libre Baskerville', serif;
+}
+
+@theme {
+  --color-primary: #1a1a2e;
+  --color-accent: #bfa760;
+  --color-light-bg: #f9f9f9;
+  --color-text-gray: #4a5568;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-inter);
+    @apply antialiased;
+  }
+  
+  h1, h2 {
+    font-family: var(--font-libre);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent hover:bg-accent/90 text-primary font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105;
+  }
+  
+  .nav-link {
+    @apply text-white hover:text-accent transition-colors font-medium relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
